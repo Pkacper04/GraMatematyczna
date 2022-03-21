@@ -13,7 +13,7 @@ namespace GraMatematyczna
     public partial class Form1 : Form
     {
         Random rand = new Random();
-        
+        Timer time = new Timer();
 
         int operation = -1;
         int number1 = -1;
@@ -21,24 +21,64 @@ namespace GraMatematyczna
         public Form1()
         {
             InitializeComponent();
-            doProcess();
+            label1.Visible = false;
+            label2.Visible = false;
+            textBox1.Visible = false;
+            label3.Visible = false;
+            progressBar1.Visible = false;
+            label4.Visible = false;
+            label1.Text = "";
+            label2.Text = "";
         }
 
-        public async void doProcess()
+        public async void StartGame()
         {
-            int i = 0;
             while (true)
             {
+                if (progressBar1.Value == 100)
+                {
+                    RestartGame();
+                    return;
+                }
                 label2.Text = "";
+                textBox1.Clear();
                 string question = ChooseQuestion();
                 label1.Text = question;
-                await Task.Delay(5000);
+
+                for (int i = 5; i > -1; i--)
+                {
+                    label4.Text = "Czas: " + i.ToString();
+                    await Task.Delay(1000);
+                }
+                
+                
                 if (textBox1.Text != Result())
+                {
+                    label2.ForeColor = Color.Red;
                     label2.Text = "Zla odpowiedz";
+                }
                 else
+                {
+                    label2.ForeColor = Color.Green;
                     label2.Text = "Dobra odpowiedz";
+                    progressBar1.Value += 100;
+                }
                 await Task.Delay(2000);
             }
+        }
+
+        private void RestartGame()
+        {
+            label1.Visible = false;
+            label2.Visible = false;
+            textBox1.Visible = false;
+            label3.Visible = false;
+            progressBar1.Visible = false;
+            label4.Visible = false;
+            label1.Text = "";
+            label2.Text = "";
+            button1.Visible = true;
+            progressBar1.Value = 0;
         }
 
         private string Result()
@@ -73,7 +113,31 @@ namespace GraMatematyczna
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Visible = true ;
+            label2.Visible = true;
+            textBox1.Visible = true;
+            label3.Visible = true;
+            button1.Visible = false;
+            label4.Visible = true;
+            progressBar1.Visible = true;
+            StartGame();
+        }
     }
 }
