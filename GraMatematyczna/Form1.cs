@@ -13,7 +13,8 @@ namespace GraMatematyczna
     public partial class Form1 : Form
     {
         Random rand = new Random();
-        Timer time = new Timer();
+
+        int steps = 100;
 
         int operation = -1;
         int number1 = -1;
@@ -61,7 +62,10 @@ namespace GraMatematyczna
                 {
                     label2.ForeColor = Color.Green;
                     label2.Text = "Dobra odpowiedz";
-                    progressBar1.Value += 100;
+                    if (progressBar1.Value + steps > 100)
+                        progressBar1.Value = 100;
+                    else
+                        progressBar1.Value += steps;
                 }
                 await Task.Delay(2000);
             }
@@ -130,6 +134,12 @@ namespace GraMatematyczna
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox2.TextLength != 0)
+                if (int.TryParse(textBox2.Text, out _))
+                {
+                    double a = 100.0 / double.Parse(textBox2.Text);
+                    steps = (int)Math.Ceiling(a);
+                }
             label1.Visible = true ;
             label2.Visible = true;
             textBox1.Visible = true;

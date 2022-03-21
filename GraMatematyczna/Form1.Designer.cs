@@ -36,6 +36,8 @@ namespace GraMatematyczna
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -106,11 +108,29 @@ namespace GraMatematyczna
             this.progressBar1.Size = new System.Drawing.Size(280, 23);
             this.progressBar1.TabIndex = 6;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 408);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Wybierz Ilosc pytan: ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(329, 405);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -135,6 +155,8 @@ namespace GraMatematyczna
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
